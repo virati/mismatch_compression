@@ -21,3 +21,6 @@ Oscillatory analyses depend on a separate library called DBSpace, available here
 
 ## Notebook
 A provided notebook enables interactive adjustment of the stimulation parameters.
+
+## Methods
+![](imgs/A1_SysDiag.png)
