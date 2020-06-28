@@ -8,6 +8,8 @@ Voltage sweep normalization using polynomial fits
 Here, we focus on just one gel-agar interface and demonstrate that each of the correction steps does what we want it to in terms of normalizing out impedance mismatch
 
 """
+import sys
+sys.path.append('/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/DBSpace/')
 from spot_check import spot_check
 from collections import defaultdict
 import matplotlib.pyplot as plt
@@ -56,7 +58,7 @@ for gel,fname in v_files.items():
         #Get ready for CORRECTION
         precorr_psd = {cc:10*(exp_results[stim_v]['F']['Pxx'][cc]) for cc in chann_label}
         
-        poly_ret = dbo.poly_subtr(precorr_psd,exp_results[stim_v]['F']['F'])
+        poly_ret = dbo.poly_subtrLFP(precorr_psd,exp_results[stim_v]['F']['F'])
         
         exp_results[stim_v]['F']['Pxx_corr'] = poly_ret[0]
         exp_results[stim_v]['F']['PolyItself'] = poly_ret[1]
