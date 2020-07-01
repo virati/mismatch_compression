@@ -11,7 +11,7 @@ import DBSpace.dLFP.diff_model as diff_model
 from DBSpace.dLFP.diff_model import sim_diff, sim_amp
 
 print('dLFP Simulation for Mismatch Compression - Script')
-diff_run = sim_diff(Ad=500,wform='moresine4',clock=True,stim_v=6)
+diff_run = sim_diff(Ad=100,wform='moresine4',clock=True,stim_v=0)
 #diff_run.set_brain()
 #diff_run.set_stim(wform='ipg')
 

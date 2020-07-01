@@ -35,7 +35,7 @@ def normalize(x):
 chann_label = ['Left','Right']
 side_idx = {'Left':0,'Right':1}
 
-stim_vs = {0:(10,30),2:(34,54),4:(100,120),6:(160,180),8:(220,240)}
+stim_vs = {0:(10,30),2:(34,54),4:(100,120),6:(160,180),8:(220,240)} #the timeperiods being studied as the 'voltage' times
 do_stimvs = [0,2,4,6,8]
 
 exp_results = nestdict()
@@ -58,7 +58,7 @@ for gel,fname in v_files.items():
         #Get ready for CORRECTION
         precorr_psd = {cc:10*(exp_results[stim_v]['F']['Pxx'][cc]) for cc in chann_label}
         
-        poly_ret = dbo.poly_subtrLFP(precorr_psd,exp_results[stim_v]['F']['F'])
+        poly_ret = dbo.poly_subtrEEG(precorr_psd,exp_results[stim_v]['F']['F'])
         
         exp_results[stim_v]['F']['Pxx_corr'] = poly_ret[0]
         exp_results[stim_v]['F']['PolyItself'] = poly_ret[1]
