@@ -45,7 +45,7 @@ preproc_flows = [['Pxx','Osc'],['Pxx_corr','Osc_corr']]
 do_feats = {'Standard':['Delta','Theta','Alpha','Beta','Gamma'],'Adjusted':['Delta','Theta','Alpha','Beta*','Gamma1']}
 
 for gel,fname in v_files.items():
-    _ = spot_check(fname,tlims=(0,-1),plot_sg=True)
+    _ = spot_check(fname,tlims=(0,-1),plot_sg=True,plot_channs=[do_side])
     
     # Go to each voltage in the sweep
     for stim_v,iv in stim_vs.items():
@@ -74,6 +74,8 @@ for gel,fname in v_files.items():
         
         #Finally, we're just going to do the Gain Compression Ratio
         exp_results[stim_v]['GCratio'],_ = dbo.calc_feats(exp_results[stim_v]['F']['Pxx'],exp_results[stim_v]['F']['F'],modality='lfp',dofeats=['GCratio'],compute_method=do_calc)
+        #Finally, we're just going to do the Gain Compression Ratio
+        exp_results[stim_v]['THarm'],_ = dbo.calc_feats(exp_results[stim_v]['F']['Pxx'],exp_results[stim_v]['F']['F'],modality='lfp',dofeats=['THarm'],compute_method=do_calc)
 
 
     #go to each preprocessing flow
@@ -100,8 +102,11 @@ for gel,fname in v_files.items():
             
             
             plt.subplot(2,2,4)
-            plt.scatter(v_stim,exp_results[v_stim]['GCratio'][side_idx[do_side]])
-            plt.ylim((0.8,2.2))
+            #plt.scatter(v_stim,exp_results[v_stim]['GCratio'][side_idx[do_side]])
+            plt.scatter(exp_results[v_stim]['THarm'][side_idx[do_side]],exp_results[v_stim]['GCratio'][side_idx[do_side]])
+            plt.xlabel('THarm')
+            plt.ylabel('GCratio')
+            #plt.ylim((0.8,2.2))
             
         plt.legend(do_stimvs)
         plt.suptitle(gel + str(plot_proc) + do_side + '| Bands: ' + band_approach + ' Calc: ' + do_calc)

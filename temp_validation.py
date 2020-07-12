@@ -18,14 +18,14 @@ from DBSpace import nestdict
 
 #%%
 v_files = {'C36':'/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/mismatch_compression/data/temp_sweep/pt988_2017_02_19_11_53_52__MR_0_36C.txt',
-            'C37':'/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/mismatch_compression/data/temp_sweep/pt988_2017_02_19_11_29_41__MR_0_37C.txt',
+           'C37':'/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/mismatch_compression/data/temp_sweep/pt988_2017_02_19_11_29_41__MR_0_37C.txt',
            'C38':'/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/mismatch_compression/data/temp_sweep/pt988_2017_02_19_12_17_01__MR_0_38C.txt'}
 
 
 band_approach = 'Adjusted'
 do_calc = 'mean'
 
-do_side = 'Right'
+do_side = 'Left'
 
 #%%
 
