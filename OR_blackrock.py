@@ -37,7 +37,7 @@ plt.rcParams['image.cmap'] = 'jet'
 
 # Inits
 #datafile = 'C:/Users/mfrankel/Dropbox/BlackrockDB/software/sampledata/The Most Perfect Data in the WWWorld/' \'sampleData.ns6'
-datafile = '/run/media/virati/Stokes/MDD_Data/OR/DBS905/20150831-164204-002.ns2'
+datafile = '/home/virati/MDD_Data/OR/DBS905/20150831-164204-002.ns2'
 #datafile = '/run/media/virati/Stokes/MDD_Data/OR/DBS906/20150727-174713/20150727-174713-001.ns2' 
 #datafile = '/mnt/auto/MDD_Data/Active/OR/DBS906/20150727-174713/20150727-174713-001.ns6'
 #datafile = '/home/virati/MDD_Data/OR/DBS906/20150727-174713/20150727-174713-001.ns6'
@@ -49,9 +49,9 @@ file = '/20150727-130014/20150727-130014-001.ns2'
 #datafile = '/home/virati/MDD_Data/OR/DBS906//20150727-181004/20150727-181004-001.ns2'
 
 elec_ids     = 'all'  # 'all' is default for all (1-indexed)
-start_time_s = 1115                       # 0 is default for all
-data_time_s  = 300                     # 'all' is default for all
-downsample   = 1                       # 1 is default
+start_time_s = 500                       # 0 is default for all
+data_time_s  = 500                     # 'all' is default for all
+downsample   = 2                       # 1 is default
 #plot_chan    = 5                       # 1-indexed
 
 # Open file and extract headers
@@ -107,7 +107,7 @@ def plot_PSDs(znorm=False):
 def plot_TS(plotch = 30):
     plt.figure()
     fs = cont_data['samp_per_s']
-    ds_f = 10
+    ds_f = 40
 
     #tvect = cont_data['start_time_s'] + arange(cont_data['data'].shape[1]) / (cont_data['samp_per_s'] / ds_f)
     sigin = cont_data['data'][plotch,:] - cont_data['data'][0,:]
@@ -136,7 +136,10 @@ def plot_SGs(plotch = 30):
     ds_f = 1
     sigin = cont_data['data'][plotch,:] - cont_data['data'][0,:]
     ts_SG = sig.decimate(sigin,ds_f)
-    F,T,SG = sig.spectrogram(ts_SG,nperseg=1024,noverlap=512,window=sig.get_window('blackmanharris',1024),fs=fs/ds_f)
+    plt.plot(sig.decimate(sigin,20))
+    
+    plt.figure()
+    F,T,SG = sig.spectrogram(ts_SG,nperseg=1024,noverlap=1000,window=sig.get_window('blackmanharris',1024),fs=fs/ds_f,nfft=2**11)
     plt.title(plotch)
     #plt.pcolormesh(T,F,np.log10(SG))
     #plt.plot(F,np.median(10*np.log10(SG),axis=1))
@@ -147,4 +150,9 @@ def plot_SGs(plotch = 30):
     print(cont_data['data'].shape)
 plot_SGs(plotch = 30) #30 has a chirp, so probably LFP
     
-
+''' Settings for 906
+elec_ids     = 'all'  # 'all' is default for all (1-indexed)
+start_time_s = 1115                       # 0 is default for all
+data_time_s  = 300                     # 'all' is default for all
+downsample   = 1                       # 1 is default
+'''

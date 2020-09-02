@@ -45,7 +45,7 @@ preproc_flows = [['Pxx','Osc']]#,['Pxx_corr','Osc_corr']]
 do_feats = {'Standard':['Delta','Theta','Alpha','Beta','Gamma'],'Adjusted':['Delta','Theta','Alpha','Beta*','Gamma1']}
 
 for gel,fname in v_files.items():
-    _ = spot_check(fname,tlims=(0,-1),plot_sg=True,chann_labels=[do_side])
+    _ = spot_check(fname,tlims=(0,-1),plot_sg=True)
     
     # Go to each voltage in the sweep
     for stim_v,iv in stim_vs.items():

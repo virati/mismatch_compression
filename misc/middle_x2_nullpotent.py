@@ -43,6 +43,7 @@ class sig2:
         plt.colorbar()
         #plt.figure()
         cset = plt.contour(p1,p2,(potent),levels=[0],linewidths=2,colors='red')
+        cset2 = plt.contour(p1,p2,np.abs(potent),levels=[10402],linewidths=5,colors='green')
         plt.title('af = ' + str(af))
         
         

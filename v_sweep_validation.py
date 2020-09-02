@@ -76,6 +76,7 @@ for gel,fname in v_files.items():
         exp_results[stim_v]['GCratio'],_ = dbo.calc_feats(exp_results[stim_v]['F']['Pxx'],exp_results[stim_v]['F']['F'],modality='lfp',dofeats=['GCratio'],compute_method=do_calc)
         #Finally, we're just going to do the Gain Compression Ratio
         exp_results[stim_v]['THarm'],_ = dbo.calc_feats(exp_results[stim_v]['F']['Pxx'],exp_results[stim_v]['F']['F'],modality='lfp',dofeats=['THarm'],compute_method=do_calc)
+        exp_results[stim_v]['SHarm'],_ = dbo.calc_feats(exp_results[stim_v]['F']['Pxx'],exp_results[stim_v]['F']['F'],modality='lfp',dofeats=['SHarm'],compute_method=do_calc)
 
 
     #go to each preprocessing flow
@@ -103,9 +104,10 @@ for gel,fname in v_files.items():
             
             plt.subplot(2,2,4)
             #plt.scatter(v_stim,exp_results[v_stim]['GCratio'][side_idx[do_side]])
-            plt.scatter(exp_results[v_stim]['THarm'][side_idx[do_side]],exp_results[v_stim]['GCratio'][side_idx[do_side]])
-            plt.xlabel('THarm')
-            plt.ylabel('GCratio')
+            #plt.scatter(exp_results[v_stim]['THarm'][side_idx[do_side]],exp_results[v_stim]['GCratio'][side_idx[do_side]]);plt.ylabel('GCratio')
+            plt.scatter(exp_results[v_stim]['THarm'][side_idx[do_side]],exp_results[v_stim]['SHarm'][side_idx[do_side]]);plt.ylabel('Secondary Harmonic')
+            plt.xlabel('Tertiary Harmonic')
+            
             #plt.ylim((0.8,2.2))
             
         plt.legend(do_stimvs)
