@@ -6,7 +6,7 @@ Created on Mon Jun  5 13:55:26 2017
 @author: virati
 Stimulation artifact plotting and outlining
 """
-import Sim_Sig as SiSi
+#import Sim_Sig as SiSi
 import numpy as np
 #import prettyplotlib as ppl
 import matplotlib.pyplot as plt
@@ -82,7 +82,7 @@ elif stim == 'real':
     #OR JUST DO THIS IN THE SALINE AND EXTRACT LITERALLY WHAT THE STIM IS ALONE***********
     big_x = np.tile(dsamp,2638)[0:big_t.shape[0]]
 elif stim == 'ipg':
-    ipg_infile = 'ipg_data/ssipgwave_vreg_Ra1p1kOhm_1usdt.txt'
+    ipg_infile = '/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/DBSpace/dLFP/ipg_data/ssipgwave_vreg_Ra1p1kOhm_1usdt.txt'
     inmatr = np.array(pd.read_csv(ipg_infile,sep=',',header=None))
     
     #concatenate this to massive
