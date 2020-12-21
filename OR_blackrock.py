@@ -42,6 +42,7 @@ datafile = '/home/virati/MDD_Data/OR/DBS905/20150831-164204-002.ns2'
 #datafile = '/mnt/auto/MDD_Data/Active/OR/DBS906/20150727-174713/20150727-174713-001.ns6'
 #datafile = '/home/virati/MDD_Data/OR/DBS906/20150727-174713/20150727-174713-001.ns6'
 home = '/home/virati/MDD_Data/OR/'
+
 pt = 'DBS906'
 file = '/20150727-130014/20150727-130014-001.ns2'
 
@@ -104,10 +105,10 @@ def plot_PSDs(znorm=False):
 #ch_names = plot_PSDs(znorm=False)
 #%%
 
-def plot_TS(plotch = 30):
+def plot_TS(plotch = 30,ds_f = 40):
     plt.figure()
     fs = cont_data['samp_per_s']
-    ds_f = 40
+    
 
     #tvect = cont_data['start_time_s'] + arange(cont_data['data'].shape[1]) / (cont_data['samp_per_s'] / ds_f)
     sigin = cont_data['data'][plotch,:] - cont_data['data'][0,:]
@@ -120,6 +121,9 @@ def plot_TS(plotch = 30):
     #plt.ylim((0,100))
 
 plot_TS()
+#%%
+plt.figure()
+plt.plot(cont_data['data'][30,0:1000])
 
 
 #%%

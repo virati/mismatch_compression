@@ -103,9 +103,16 @@ br_t = big_t[0::10]
 
 #gaussian blur the orig_big_x to
 big_x = orig_big_x
+#np.save('/tmp/ipg',orig_big_x)
 
-np.save('/tmp/ipg',orig_big_x)
+# Plot big_x and its PSD
+plt.subplot(211)
+plt.plot(big_x)
+plt.subplot(212)
+F,Pxx = sig.welch(big_x,fs=Fs)
+plt.plot(F,10*np.log10(Pxx),linewidth=5,label='Sampled')
 
+#%%
 br_x = big_x[0::10]
 
 
@@ -189,7 +196,7 @@ np.save('/tmp/ipg.txt',br_x)
 #%%
 g_fact = 10
 big_x = np.tanh(g_fact*orig_big_x)
-br_x = big_x[0::10]
+br_x = np.copy(big_x[0::10])
 
 plt.figure()
 plt.subplot(311)
