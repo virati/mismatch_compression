@@ -5,6 +5,7 @@ Created on Tue Jul  7 14:29:11 2020
 
 @author: virati
 OR - edf/XLTek file
+DISSERTATION FINAL
 """
 import mne
 import matplotlib.pyplot as plt

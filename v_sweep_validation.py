@@ -6,7 +6,7 @@ Created on Sat May 26 14:20:12 2018
 @author: virati
 Voltage sweep normalization using polynomial fits
 Here, we focus on just one gel-agar interface and demonstrate that each of the correction steps does what we want it to in terms of normalizing out impedance mismatch
-
+DISSERTATION FINAL
 """
 import sys
 sys.path.append('/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/DBSpace/')
@@ -107,9 +107,26 @@ for gel,fname in v_files.items():
             #plt.scatter(exp_results[v_stim]['THarm'][side_idx[do_side]],exp_results[v_stim]['GCratio'][side_idx[do_side]]);plt.ylabel('GCratio')
             plt.scatter(exp_results[v_stim]['THarm'][side_idx[do_side]],exp_results[v_stim]['SHarm'][side_idx[do_side]]);plt.ylabel('Secondary Harmonic')
             plt.xlabel('Tertiary Harmonic')
+            plt.xlim((-70,-45))
+            plt.ylim((-70,-20))
             
             #plt.ylim((0.8,2.2))
             
         plt.legend(do_stimvs)
         plt.suptitle(gel + str(plot_proc) + do_side + '| Bands: ' + band_approach + ' Calc: ' + do_calc)
         
+    for plot_proc in preproc_flows:
+       plt.figure()
+       for v_stim in do_stimvs:
+           
+           plt.scatter(v_stim,exp_results[v_stim]['THarm'][side_idx[do_side]]-exp_results[v_stim]['SHarm'][side_idx[do_side]]);
+           plt.ylabel('Ratio')
+           plt.xlabel('Stim Voltage')
+           
+           #plt.ylim((0.8,2.2))
+           
+       plt.legend(do_stimvs)
+       plt.suptitle(gel + str(plot_proc) + do_side + '| Bands: ' + band_approach + ' Calc: ' + do_calc)
+       plt.ylim((-30,10))
+       plt.xlim((-1,9))
+       

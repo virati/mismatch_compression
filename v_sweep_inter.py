@@ -5,6 +5,7 @@ Created on Mon Jun 29 11:09:18 2020
 
 @author: virati
 V-sweep INTER analyses - analysing changes in oscillation between the active stimulation
+DISSERTATION FINAL
 """
 
 import sys

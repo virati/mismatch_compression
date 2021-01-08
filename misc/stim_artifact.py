@@ -5,6 +5,7 @@ Created on Mon Jun  5 13:55:26 2017
 
 @author: virati
 Stimulation artifact plotting and outlining
+DISSERTATION FINAL
 """
 #import Sim_Sig as SiSi
 import numpy as np
@@ -228,30 +229,32 @@ plt.plot(F,10*np.log10(Pxx),linewidth=5,label='Sampled')
 #plt.ylim((0,0.004))
 plt.legend()
 
-plt.subplot(313)
-plt.plot(F,Pxx,linewidth=5,label='Sampled')
-plt.ylim((0,0.004))
-plt.legend()
+ax = plt.subplot(313)
+lns1 = ax.plot(F,Pxx,linewidth=5,label='Sampled',color='g')
+#plt.ylim((0,0.004))
+
+ax.legend()
 
 #if you want it normalized somehow
 #plt.plot(Fbig,PxxBig/(10*np.sum(PxxBig[Fbig < 200])),linewidth=3,label='Analog')
 #if not
-#%%
+
 #find ratio of the 130Hz in sampled and analog; then just scale Analog up
 #This is so they can be plotted on the same scale; should probably plot something on the right as well
 Fbig,PxxBig = sig.welch(big_x,fs=Fs)
 nPxxBig = (PxxBig / PxxBig[closeto(Fbig,130,eps=0.02)]) * Pxx[closeto(F,130)]
 
-plt.subplot(313)
+ax2 = ax.twinx()
+lns2 = ax2.plot(Fbig,PxxBig,linewidth=3,label='Analog')
 
-plt.plot(Fbig,PxxBig,linewidth=3,label='Analog')
-
-
-plt.legend()
+lns = lns1+lns2
+labs = [l.get_label() for l in lns]
+ax.legend(lns, labs, loc=0)
 
 plt.xlabel('Frequency (Hz)')
 plt.ylabel('Power (dB)')
 plt.title('PSD of the Signal')
+plt.xlim((0,1000))
 
 
 #%%

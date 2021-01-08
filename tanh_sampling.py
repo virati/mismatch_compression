@@ -52,6 +52,7 @@ for idx,ii in enumerate((tanh_expansions)):
     res = sig.convolve(s[idx,:],p,mode='same')
 
     plt.plot(w,res,label=ii)
+    
 total_res = sig.convolve(np.sum(s,axis=0),p,mode='same')
 plt.plot(w,-total_res,label='total',color='k')
 plt.title('Convolved')
