@@ -24,7 +24,6 @@ v_files = {'IF-300':'/home/virati/MDD_Data/Benchtop/VRT_Impedance_RB/Session_201
 
 band_approach = 'Standard'
 do_calc = 'mean'
-
 do_side = 'Left'
 
 #%%
