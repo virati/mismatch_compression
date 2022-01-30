@@ -9,19 +9,13 @@ Raw stim waveform plot and PSD
 import numpy as np
 #import prettyplotlib as ppl
 import matplotlib.pyplot as plt
-import matplotlib
 import scipy.signal as sig
 import scipy.io as scio
 import pandas as pd
-import scipy
-import pdb
 
 import sys
 sys.path.append('/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/DBSpace/')
 from spot_check import spot_check
-
-from collections import defaultdict
-
 
 ipg_infile = '/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/DBSpace/dLFP/ipg_data/ssipgwave_vreg_Ra1p1kOhm_1usdt.txt'
 inmatr = np.array(pd.read_csv(ipg_infile,sep=',',header=None))
