@@ -7,12 +7,13 @@ Created on Mon Dec 16 18:03:30 2019
 File that performs the impedance mismatch analysis for patient set
 """
 
-import DBSpace as dbo
-from DBSpace.dLFP.impedances import Z_class
+#%%a
+import dbspace as dbo
+from dbspace.signal.dLFP.impedances import Z_class
 import matplotlib.pyplot as plt
 
 
-print('Doing Impedance Mismatch Analysis - Script')
+print("Doing Impedance Mismatch Analysis - Script")
 Z_lib = Z_class()
 Z_lib.get_recZs()
 Z_lib.plot_recZs()
