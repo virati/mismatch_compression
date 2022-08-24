@@ -20,7 +20,6 @@ constantly==15.1.0
 cryptography==35.0.0
 cycler==0.10.0
 Cython==0.29.27
--e git+https://github.com/virati/DBSpace.git@e97355fcec2299e03ba59a77686028bdff0ff0b1#egg=DBSpace
 debugpy==1.5.1
 decorator==5.1.0
 entrypoints==0.3
