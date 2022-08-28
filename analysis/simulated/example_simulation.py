@@ -1,11 +1,4 @@
 #%%
-"""
-Created on Mon Dec 16 18:07:46 2019
-
-@author: virati
-Splitting our simulation of the dLFP into separate script
-"""
-
 import dbspace.signal.dLFP.diff_model as diff_model
 from dbspace.signal.dLFP.diff_model import sim_diff, sim_amp
 import matplotlib.pyplot as plt
@@ -36,7 +29,7 @@ diff_run = sim_diff(
     clock=True,
     stim_v=4,
     stim_freq=stimulation_frequency,
-    fullFs=4220,
+    fullFs=42200,
 )
 amp_run = sim_amp(
     diff_run, family=amp_model, noise=1e-6, sig_amp_gain=10, pre_amp_gain=5
