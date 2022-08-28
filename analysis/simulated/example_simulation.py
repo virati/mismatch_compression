@@ -36,18 +36,29 @@ diff_run = diff_model.sim_diff(
     clock=True,
     stim_v=4,
     stim_freq=stimulation_frequency,
-    full_Fs=10000,
+    full_Fs=42200,
 )
 amp_run = sig_amp.sim_amp(
-    diff_run, family=amp_model, noise=1e-6, sig_amp_gain=10, pre_amp_gain=0.1
+    diff_run,
+    family=amp_model,
+    noise=1e-6,
+    sig_amp_gain=10,
+    pre_amp_gain=0.1,
+    final_Fs=422,
 )
 
 amp_run.simulate(Z1, Z3)
+
+#%%[markdown]
+# # Plotting
+# Now that we've simulated the impedance mismatch we're interested in, let's plot the results in various domains
+
+#%%
 amp_run.plot_simulation()
+plt.show()
+#%%
 amp_run.plot_time_dom()
 amp_run.plot_freq_dom()
 amp_run.plot_tf_dom()
 
 plt.show()
-
-# %%
