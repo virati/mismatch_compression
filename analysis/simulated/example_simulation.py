@@ -34,7 +34,7 @@ amp_run.simulate(Z1, Z3)
 
 
 #%%
-amp_run.plot_simulated()
+amp_run.gen_simulated_SGs()
 amp_run.plot_time_dom()
 amp_run.plot_freq_dom()
 amp_run.plot_tf_dom()
