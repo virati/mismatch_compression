@@ -1,11 +1,4 @@
 #%%
-"""
-Created on Mon Dec 16 18:07:46 2019
-
-@author: virati
-Splitting our simulation of the dLFP into separate script
-"""
-
 from dbspace.signal.dLFP.diff_amp_model import diff_amp
 from dbspace.signal.dLFP.sig_amp_model import sig_amp
 import matplotlib.pyplot as plt
@@ -37,7 +30,11 @@ amp_run = sig_amp(
     diff_run, family=amp_model, noise=1e-6, sig_amp_gain=10, pre_amp_gain=5
 )
 
-amp_run.simulate(Z1, Z3, use_windowing="blackmanharris")
+amp_run.simulate(Z1, Z3)
+
+
+#%%
+amp_run.plot_simulated()
 amp_run.plot_time_dom()
 amp_run.plot_freq_dom()
 amp_run.plot_tf_dom()
