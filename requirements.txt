@@ -1,9 +1,10 @@
+AllanTools==2019.9
 asttokens==2.0.8
 backcall==0.2.0
 certifi==2022.6.15
 charset-normalizer==2.1.1
 cycler==0.11.0
--e git+https://github.com/virati/DBSpace.git@788e4c205a89b996ebdf44a5d2ce31af82c82172#egg=dbspace
+Cython==0.29.32
 debugpy==1.6.3
 decorator==5.1.1
 entrypoints==0.4
@@ -21,8 +22,10 @@ kiwisolver==1.4.4
 matplotlib==3.5.3
 matplotlib-inline==0.1.6
 nest-asyncio==1.5.5
+networkx==2.8.6
 nibabel==3.2.2
 nilearn==0.8.1
+nitime==0.9
 numpy==1.23.2
 openpyxl==3.0.10
 packaging==21.3
