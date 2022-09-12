@@ -1,13 +1,7 @@
 #%%
-"""
-Created on Mon Dec 16 18:07:46 2019
+from dbspace.signal.dLFP.diff_amp_model import diff_amp
+from dbspace.signal.dLFP.sig_amp_model import sig_amp
 
-@author: virati
-Splitting our simulation of the dLFP into separate script
-"""
-
-import dbspace.signal.dLFP.diff_model as diff_model
-from dbspace.signal.dLFP.diff_model import sim_diff, sim_amp
 import matplotlib.pyplot as plt
 
 plt.rcParams["figure.figsize"] = (20, 10)
@@ -30,15 +24,15 @@ amp_model = "tanh"
 
 
 #%%
-diff_run = sim_diff(
+diff_run = diff_amp(
     Ad=200,
     wform="moresine4",
     clock=True,
     stim_v=4,
     stim_freq=stimulation_frequency,
-    fullFs=4220,
+    fullFs=42200,
 )
-amp_run = sim_amp(
+amp_run = sig_amp(
     diff_run, family=amp_model, noise=1e-6, sig_amp_gain=10, pre_amp_gain=5
 )
 
