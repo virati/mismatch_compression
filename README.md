@@ -19,7 +19,8 @@ Once cloned into the repository, build the devcontainer (instructions available 
 This devcontainer then yields a console that can be used to run the core Jupyter notebooks to regenerate figures from the preprint/manuscript.
 
 ### Dependencies
-Oscillatory analyses depend on a separate library called DBSpace, available here: [PyPi](https://pypi.org/project/dbspace/)
+Oscillatory analyses depend on a separate library called DBSpace, available here: [PyPi](https://pypi.org/project/dbspace/) or [Github](https://github.com/dbspaceLab/dbspace/tree/MC/ieee_reviewers)
+
 All other dependencies are available through PyPI and can be installed using
 
 ```
