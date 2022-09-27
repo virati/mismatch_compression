@@ -3,11 +3,9 @@ Author: Vineet Tiruvadi
 
 
 ## Overview
-New bidirectional deep brain stimulation (DBS) devices that use *differential* recording channels enable local field potentials (LFPs) alongside clinical therapy.
-Even when they remove a significant part of the DBS, residual artifact can overwhelm downstream circuitry.
-In this project I characterize _mismatch compression_ distortions and propose a mitigation strategy to enable more reliable oscillatory analyses of $\partial$LFP recordings for chronic DBS readouts.
+This is a github repository containing the simulation and analysis code associated with the manuscript "Mitigating Mismatch Compression in Differential Local Field Potentials".
 
-![](imgs/dLFP_sim.png)
+This branch corresponds to the manuscript revision submitted Sept 2022.
 
 ## Installation
 
