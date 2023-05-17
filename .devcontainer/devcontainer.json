@@ -48,6 +48,6 @@
 	"remoteUser": "vscode",
 	"mounts": [
 		"type=bind,source=/home/virati/Dropbox/projects/Research/MDD-DBS/Ephys/DBSpace,target=/home/vscode/dbspace",
-		"type=bind,source=/home/virati/Dropbox/projects/Research/MDD-DBS/Data,target=/home/vscode/data"
+		"type=bind,source=/home/virati/mdd_dbs_data,target=/home/vscode/data"
 	]
 }
