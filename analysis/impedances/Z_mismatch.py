@@ -1,20 +1,13 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Dec 16 18:03:30 2019
-
-@author: virati
-File that performs the impedance mismatch analysis for patient set
-"""
-
 #%%a
-import dbspace as dbo
 from dbspace.signal.dLFP.impedances import Z_class
 import matplotlib.pyplot as plt
 
 
 print("Doing Impedance Mismatch Analysis - Script")
-Z_lib = Z_class()
+Z_lib = Z_class(
+    impedance_data_path="/home/vscode/data/anatomy/CT/Zs_GMs_Es.xlsx",
+    pts=["DBS901", "DBS903", "DBS905", "DBS906", "DBS907", "DBS908"],
+)
 Z_lib.get_recZs()
 Z_lib.plot_recZs()
 Z_lib.dynamics_measures()

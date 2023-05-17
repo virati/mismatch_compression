@@ -24,7 +24,12 @@ amp_model = "tanh"
 
 #%%
 diff_run = diff_amp(
-    Ad=200, wform="moresine4", clock=True, stim_v=4, stim_freq=stimulation_frequency
+    Ad=200,
+    wform="moresine4",
+    clock=True,
+    stim_v=4,
+    stim_freq=stimulation_frequency,
+    fullFs=42200,
 )
 amp_run = sig_amp(
     diff_run, family=amp_model, noise=1e-6, sig_amp_gain=10, pre_amp_gain=5
