@@ -1,27 +1,16 @@
 #%%
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat May 26 14:20:12 2018
-
-@author: virati
-Voltage sweep normalization using polynomial fits
-Here, we focus on just one gel-agar interface and demonstrate that each of the correction steps does what we want it to in terms of normalizing out impedance mismatch
-DISSERTATION FINAL
-"""
-
-import dbspace as dbo
+# import dbspace as dbo
 from dbspace.utils.structures import nestdict
 from dbspace.signal.spot_check import spot_check
-from dbspace.signal.oscillations import poly_subtr
+from dbspace.signal.oscillations import poly_subtr, calc_feats
 
 import matplotlib.pyplot as plt
 import numpy as np
 
 #%%
 v_files = {
-    "IF-300": "/home/virati/MDD_Data/Benchtop/VRT_Impedance_RB/Session_2018_04_24_Tuesday/demo_2018_04_24_16_53_36__MR_0.txt",
-    "SA-100": "/home/virati/MDD_Data/Benchtop/VRT_Impedance_RB/Session_2018_04_24_Tuesday/demo_2018_04_24_17_32_09__MR_0.txt",
+    "IF-300": "/home/vscode/data/experiments/in_vitr/interface_voltage_sweep.txt",  # "/home/virati/MDD_Data/Benchtop/VRT_Impedance_RB/Session_2018_04_24_Tuesday/demo_2018_04_24_16_53_36__MR_0.txt",
+    "SA-100": "/home/vscode/data/experiments/in_vitr/saline_voltage_sweep.txt",  # "/home/virati/MDD_Data/Benchtop/VRT_Impedance_RB/Session_2018_04_24_Tuesday/demo_2018_04_24_17_32_09__MR_0.txt",
 }
 
 
@@ -73,14 +62,14 @@ for gel, fname in v_files.items():
             cc: 10 * (exp_results[stim_v]["F"]["Pxx"][cc]) for cc in chann_label
         }
 
-        poly_ret = poly_subtr(precorr_psd, exp_results[stim_v]["F"]["F"])
+        poly_ret = poly_subtr(precorr_psd["Left"], exp_results[stim_v]["F"]["F"])
 
         exp_results[stim_v]["F"]["Pxx_corr"] = poly_ret[0]
         exp_results[stim_v]["F"]["PolyItself"] = poly_ret[1]
 
         # now do oscillatory state stuff
         # Uncorrected
-        state_vect, state_basis = dbo.calc_feats(
+        state_vect, state_basis = calc_feats(
             exp_results[stim_v]["F"]["Pxx"],
             exp_results[stim_v]["F"]["F"],
             modality="lfp",
@@ -89,7 +78,7 @@ for gel, fname in v_files.items():
         )
         exp_results[stim_v]["Osc"] = {"State": state_vect, "Basis": state_basis}
 
-        state_vect, state_basis = dbo.calc_feats(
+        state_vect, state_basis = calc_feats(
             exp_results[stim_v]["F"]["Pxx_corr"],
             exp_results[stim_v]["F"]["F"],
             modality="lfp",
@@ -99,7 +88,7 @@ for gel, fname in v_files.items():
         exp_results[stim_v]["Osc_corr"] = {"State": state_vect, "Basis": state_basis}
 
         # Finally, we're just going to do the Gain Compression Ratio
-        exp_results[stim_v]["GCratio"], _ = dbo.calc_feats(
+        exp_results[stim_v]["GCratio"], _ = calc_feats(
             exp_results[stim_v]["F"]["Pxx"],
             exp_results[stim_v]["F"]["F"],
             modality="lfp",
@@ -107,14 +96,14 @@ for gel, fname in v_files.items():
             compute_method=do_calc,
         )
         # Finally, we're just going to do the Gain Compression Ratio
-        exp_results[stim_v]["THarm"], _ = dbo.calc_feats(
+        exp_results[stim_v]["THarm"], _ = calc_feats(
             exp_results[stim_v]["F"]["Pxx"],
             exp_results[stim_v]["F"]["F"],
             modality="lfp",
             dofeats=["THarm"],
             compute_method=do_calc,
         )
-        exp_results[stim_v]["SHarm"], _ = dbo.calc_feats(
+        exp_results[stim_v]["SHarm"], _ = calc_feats(
             exp_results[stim_v]["F"]["Pxx"],
             exp_results[stim_v]["F"]["F"],
             modality="lfp",
