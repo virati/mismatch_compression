@@ -1,7 +1,6 @@
 #%%
 from dbspace.signal.dLFP.diff_amp_model import diff_amp
 from dbspace.signal.dLFP.sig_amp_model import sig_amp
-
 import matplotlib.pyplot as plt
 
 plt.rcParams["figure.figsize"] = (20, 10)
@@ -36,7 +35,11 @@ amp_run = sig_amp(
     diff_run, family=amp_model, noise=1e-6, sig_amp_gain=10, pre_amp_gain=5
 )
 
-amp_run.simulate(Z1, Z3, use_windowing="blackmanharris")
+amp_run.simulate(Z1, Z3)
+
+
+#%%
+amp_run.gen_simulated_SGs()
 amp_run.plot_time_dom()
 amp_run.plot_freq_dom()
 amp_run.plot_tf_dom()
