@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mismatch-compression"
+version = "0.2.0"
+description = "Main Mismatch Compression Project from Vineet Dissertation"
+authors = ["Vineet Tiruvadi <virati@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mismatch_compression"}]
+
+[tool.poetry.dependencies]
+python = "3.8.16"
+dbspace = "^0.2.0"
+numpy = "^1.23.2"
+pandas = "^1.4.3"
+openpyxl = "^3.1.2"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.23.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
